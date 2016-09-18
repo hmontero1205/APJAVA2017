@@ -5,7 +5,7 @@ package introUnit;
 
 /**
  * @author Student 6
- * This class is designed to constrast with the procedural example! It embodies
+ * This class is designed to contrast with the procedural example! It embodies
  * an Object-Orientated approach!
  */
 public class OOPExample {
