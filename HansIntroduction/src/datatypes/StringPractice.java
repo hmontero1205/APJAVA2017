@@ -5,11 +5,13 @@ import java.util.Scanner;
 public class StringPractice {
 	static Scanner input;
 	static String user;
-	static int lineCount;
+	static boolean inLoop;
+	static String response;
+	//static int lineCount;
 
 	public static void main(String[] args) {
 		createAScanner();
-		lineCount = 0;
+		//lineCount = 0;
 		//demonstrateStringMethods();
 		//promptInput();
 		promptName();
@@ -24,8 +26,15 @@ public class StringPractice {
 	}
 
 	public static void talkForever(){
-		while(true){
-			promptInput();
+		inLoop = true;
+		while(inLoop){
+			//promptInput();
+			print("Greetings, "+user+". How's it going?");
+			response = getInput();
+			if(response.indexOf("good")>=0)
+				print("Good looks");
+			else
+				print("I don't understand?");
 		}
 	}
 
@@ -41,9 +50,37 @@ public class StringPractice {
 		
 	}
 	public static void print(String s){
-		lineCount++;
-		System.out.println("Line #"+lineCount+": "+s);
+		//create multiline string
+		String printString = "";
+		int cutOff = 35;
+		//check if there are words to add
+		//is length of s > 0?
+		while(s.length() > 0){
+			String currentLine = "";
+			String nextWord = "";
+			//while the currentLine and nextWord are less than cutoff,AND THERE ARE STILL WORDS TO ADD,
+			//do the following loooooooop
+			while(currentLine.length() + nextWord.length() <= cutOff && s.length() > 0){
+				//add the next word to line
+				currentLine += nextWord;
+				//remove that word
+				s = s.substring(nextWord.length());
+				//get the next word
+				int endOfWord = s.indexOf(" ");
+				//check to see if this is the last word
+				if(endOfWord == -1)
+					endOfWord = s.length()-1;
+				nextWord = s.substring(0,endOfWord+1);
+			}
+			printString += currentLine + "\n"; 
+			
+		}
+		System.out.println(printString);
 	}
+	public static String getInput(){
+		return input.nextLine();
+	}
+		
 	public static void demonstrateStringMethods(){
 		//String text = new String("Hello World!");
 		String text1 = "Hello World!";
