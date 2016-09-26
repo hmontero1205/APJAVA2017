@@ -32,7 +32,7 @@ public class HansMain {
 			//promptInput();
 			print("Greetings, "+user+". How's it going?");
 			response = getInput();
-			if(response.indexOf("good")>=0)
+			if(findKeyword(response,"good", 0))
 				print("Good looks");
 			else if(response.indexOf("school")>=0){
 				inLoop = false;
@@ -41,6 +41,34 @@ public class HansMain {
 			else
 				print("I don't understand?");
 		}
+	}
+
+	public static boolean findKeyword(String searchString, String key, int stringIndex) {
+		//delete white space
+		String phrase = searchString.trim();
+		//to lower case
+		phrase = phrase.toLowerCase();
+		key = key.toLowerCase();
+		int psn = phrase.indexOf(key);
+		//keep looking for word until you find right context
+		while(psn >= 0){
+			//if phrase doesnt end with is word
+			String before = " ";
+			String after = " ";
+			if(psn + key.length() < phrase.length()){
+				after = phrase.substring(psn+key.length(),psn+key.length() +1).toLowerCase();
+			}
+			if(psn>0){
+				before = phrase.substring(psn-1,psn).toLowerCase();
+			}
+			if(before.compareTo("a")<0 && after.compareTo("a") < 0){
+				return true;
+			}
+			//in case keyword not dounf, check rest of string	
+			psn = phrase.indexOf(key,psn+1);
+		}
+		
+		return false;
 	}
 
 	public static void promptInput() {
