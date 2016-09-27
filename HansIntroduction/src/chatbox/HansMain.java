@@ -8,6 +8,7 @@ public class HansMain {
 	static boolean inLoop;
 	static String response;
 	static Topic school;
+	static Topic like;
 	//static int lineCount;
 
 	public static void main(String[] args) {
@@ -32,43 +33,71 @@ public class HansMain {
 			//promptInput();
 			print("Greetings, "+user+". How's it going?");
 			response = getInput();
-			if(findKeyword(response,"good", 0))
+			if(findKeyword(response,"good", 0) >= 0)
 				print("Good looks");
-			else if(response.indexOf("school")>=0){
+			else if(findKeyword(response,"school",0)>=0){
 				inLoop = false;
 				school.talk();
+			}
+			else if(findKeyword(response,"like",0) >=0){
+				inLoop = false;
+				like.talk();
 			}
 			else
 				print("I don't understand?");
 		}
 	}
 
-	public static boolean findKeyword(String searchString, String key, int stringIndex) {
+	public static int findKeyword(String searchString, String key, int startIndex) {
 		//delete white space
 		String phrase = searchString.trim();
 		//to lower case
 		phrase = phrase.toLowerCase();
 		key = key.toLowerCase();
+		
+//		System.out.println("The phrase is "+phrase);
+//		System.out.println("The key is "+key);
 		int psn = phrase.indexOf(key);
+//		System.out.println("The position found is "+psn);
 		//keep looking for word until you find right context
 		while(psn >= 0){
-			//if phrase doesnt end with is word
+			//if phrase doesn't end with is word
 			String before = " ";
 			String after = " ";
 			if(psn + key.length() < phrase.length()){
 				after = phrase.substring(psn+key.length(),psn+key.length() +1).toLowerCase();
+//				System.out.println("The character after "+key+ " is "+after);
 			}
 			if(psn>0){
 				before = phrase.substring(psn-1,psn).toLowerCase();
+//				System.out.println("The character before "+key+ " is "+before);
 			}
 			if(before.compareTo("a")<0 && after.compareTo("a") < 0){
-				return true;
+//				System.out.println(key+" was found at "+psn);
+				if(noNegations(phrase,psn)){
+					return -1;
+				}
+				return psn;
 			}
-			//in case keyword not dounf, check rest of string	
+			//in case keyword not found, check rest of string	
 			psn = phrase.indexOf(key,psn+1);
+			//Goody Goode was a character in The Crucible. Goodbye Goody Goode
+//			System.out.println(key+" not found. checking "+psn);
 		}
 		
-		return false;
+		return -1;
+	}
+
+	private static boolean noNegations(String phrase, int index) {
+		if(index-3>= 0 && phrase.substring(index-3,index).equals("no "))
+			return true;
+		else if(index-4>= 0 && phrase.substring(index-4,index).equals("not "))
+			return true;
+		else if(index-6>= 0 && phrase.substring(index-6,index).equals("never "))
+			return true;	
+		else if(index-4>= 0 && phrase.substring(index-4,index).equals("n't "))
+			return true;
+		else return false;
 	}
 
 	public static void promptInput() {
@@ -81,6 +110,7 @@ public class HansMain {
 	public static void createTopics() {
 		input = new Scanner(System.in);
 		school = new School();
+		like = new HansLike();
 		
 	}
 	public static void print(String s){
