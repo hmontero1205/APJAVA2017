@@ -27,6 +27,15 @@ public class HansLike implements Topic {
 			}
 		}
 	}
-	
+	public boolean isTriggered(String userInput) {
+		String[] triggers = {"enjoy","like","interest"};
+		//use for loop to iterate thru array
+		if (HansMain.findKeyword(userInput, "enjoy", 0)>=0)
+			return true;
+		if (HansMain.findKeyword(userInput, "like", 0)>=0)
+			return true;
+		
+		return false;
+	}
 
 }
