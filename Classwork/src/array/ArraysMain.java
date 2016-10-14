@@ -5,13 +5,37 @@ public class ArraysMain {
 	public static void main(String[] args) {
 		//timing how quickly a computer processes.
 		long startTime = System.currentTimeMillis();
+		
+		SampleElement sample = new SampleElement(10);
+		sample.increase();
+		System.out.println("The sample element is now: "+sample.getNumber());
+		
+		long endTime = System.currentTimeMillis();
+		System.out.println("Completed method in..."+(endTime-startTime)+"ms!!");
+	}
+	
+	private static void passByValueDemo(){
 		//arrayIntroMethod();
 		String[] someStrings = new String[100];
 		populateArray(someStrings);
 		changeString(someStrings[99]);
-		printArray(someStrings);
-		long endTime = System.currentTimeMillis();
-		System.out.println("Completed method in..."+(endTime-startTime)+"ms!!");
+		System.out.println("after changeString: "+someStrings[99]);
+		changeArray(someStrings);
+		System.out.println("after changeArray: "+someStrings[99]);
+		changeArrayElement(someStrings,99);
+		System.out.println("after changeArrayElement: "+someStrings[99]);
+		//printArray(someStrings);
+	}
+	private static void changeArrayElement(String[] someStrings, int i) {
+		someStrings[i] = "New item: "+(i+1);
+		
+	}
+
+	private static void changeArray(String[] someStrings){
+		someStrings = new String[100];
+		for(int i=0;i<someStrings.length;i++){
+			someStrings[i] = "new item "+(i+1);
+		}
 	}
 	private static void printArray(String[] b) {
 		for(String strB: b){
