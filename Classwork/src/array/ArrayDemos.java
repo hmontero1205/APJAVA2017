@@ -24,14 +24,14 @@ public class ArrayDemos {
 	}
 	public static void demo3(){
 		int[] diceRolls = new int[50];
-		int[] rollsPossible = new int[11];
+		int[] rollsPossible = new int[25];
 		for(int d=0;d<diceRolls.length;d++){
 			int roll1 = ((int)(Math.random()*6)+1);
 			int roll2 = ((int)(Math.random()*6)+1);
 			diceRolls[d] = roll1 +roll2;
 			rollsPossible[diceRolls[d]-2]++;
 		}
-		for(int o =2;o<13;o++){
+		for(int o =2;o<27;o++){
 			System.out.println("Probability of rolling "+o+": "+(((double)diceRolls[o-2]/50))+"%.");//
 		}
 	}
