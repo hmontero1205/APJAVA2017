@@ -32,7 +32,7 @@ public class ArrayDemos {
 			rollsPossible[diceRolls[d]-2]++;
 		}
 		for(int o =2;o<13;o++){
-			System.out.println("Probability of rolling "+o+": "+(((double)diceRolls[o-2]/50))+"%.");
+			System.out.println("Probability of rolling "+o+": "+(((double)diceRolls[o-2]/50))+"%.");//
 		}
 	}
 	public static void helpDemo3(int roll){
