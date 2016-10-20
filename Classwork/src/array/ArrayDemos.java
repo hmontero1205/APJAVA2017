@@ -4,8 +4,8 @@ public class ArrayDemos {
 	public static void main(String[] args){
 		//populateArray();
 		//populateRandArray();
-	    //twoDiceRolls();
-		createDeck();
+	    twoDiceRolls();
+		//createDeck();
 	    //swapDemo();
 	}
 	public static void populateArray(){
@@ -32,7 +32,7 @@ public class ArrayDemos {
 			rollsPossible[diceRolls[d]-2]++;
 		}
 		for(int o=0;o<rollsPossible.length;o++){
-			System.out.println("Probability of rolling "+(o+2)+": "+(((double)rollsPossible[o]/diceRolls.length)*100)+"%");
+			System.out.println("Probability of roll ing "+(o+2)+": "+(((double)rollsPossible[o]/diceRolls.length)*100)+"%");
 		}
 	}
 	public static void createDeck(){
