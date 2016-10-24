@@ -48,6 +48,18 @@ public class SampleElement {
 		return searchValue < intArr[(begin+end+1)/2];
 		
 	}
+	
+	public static void cycleThrough(int[] array, int n){
+//		{0,1,2,3,4,5}
+//		1,0,2,3,4,5
+//		1,2,0,3,4,5
+//		1,2,3,0,4,5
+//		1,2,3,4,0,5
+//		1,2,3,4,5,0
+//		{1,2,3,4,5,0}
+//		{2,3,4,5,0,1}
+		
+	}
 	public static void reverseOrder(int[] array){
         /**
          * this method reverses the order of the array passed to it.
