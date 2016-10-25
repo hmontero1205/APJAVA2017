@@ -56,4 +56,13 @@ public class ArrayDemos {
 		swapDemo[1] = tempHolder;
 		System.out.println("After: "+swapDemo[0]+","+swapDemo[1]);
 	}
+	
+	public static int countUnderBound(double[] arr ,double d){
+		int numUnder = 0;
+		for(int b=0;b<arr.length;b++){
+			if(arr[b] < d)
+				numUnder++;
+		}
+		return numUnder;
+	}
 }
