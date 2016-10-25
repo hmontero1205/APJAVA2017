@@ -4,9 +4,17 @@ public class ArrayDemos {
 	public static void main(String[] args){
 		//populateArray();
 		//populateRandArray();
-	    twoDiceRolls();
+	   // twoDiceRolls();
 		//createDeck();
 	    //swapDemo();
+		int[] intArr = {1,2,3,4,5};
+		int[] subArr = {2,3,5};
+		System.out.println(longestSharedSequence(intArr,subArr));
+		//System.out.println(getSubArray(intArr,0,2));
+//		if(contains(intArr,subArr))
+//			System.out.println("Yup");
+//		else
+//			System.out.println("Nope");			
 	}
 	public static void populateArray(){
 		int[] numsArr = new int[50];
@@ -65,4 +73,66 @@ public class ArrayDemos {
 		}
 		return numUnder;
 	}
+	
+	public static String getSubArray(int[] arr,int start,int end){
+//		for(int b:arr){
+//			System.out.println(b);
+//		}
+		//start = 0, end =2
+		int[] result = new int[end-start+1];
+		for(int s=start;s<end+1;s++){
+			result[s-start] = arr[s];
+		}
+		
+		for(int b:result){
+			System.out.println(b);
+		}
+		return result.toString();
+	}
+	public static boolean contains(int[] arr,int[] subArr){
+		for(int i=0; i<arr.length; i++){
+			int j = 0;
+			while(j<subArr.length){
+				if(subArr[j] == arr[i+j]&& j == subArr.length-1){
+					return true;
+				}
+				else if(subArr[j] != arr[i+j]){
+					break;
+					
+				}
+				j++;
+			}
+		}
+		return false;		
+	}
+	
+	public static int longestSharedSequence(int[] array1,int[] array2){
+		int longestShared = 0;
+		int currentShared = 0;
+		for(int g=0;g<array1.length;g++){
+			for(int h=0;h<array2.length;h++){
+				if(array1[g]==array2[h]){
+					int counter=1;
+					while((g+counter)<array1.length && (h+counter)<array2.length){
+						System.out.println("arr1_sub"+(g+counter)+":"+array1[g+counter]+"; arr2_sub"+(h+counter)+":"+array2[h+counter]);
+						if(array1[g+counter]==array2[h+counter]){
+							System.out.println("shared!");
+							currentShared++;
+							if(currentShared>longestShared){
+								longestShared = currentShared;
+								System.out.println("longest:"+longestShared+"; current:"+currentShared);
+							}
+							counter++;
+						}
+						else{
+							counter=1;
+							break;
+						}
+					}
+				}
+			}
+		}
+		return longestShared;
+	}
 }
+
