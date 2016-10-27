@@ -16,7 +16,8 @@ public class ArrayDemos {
 //			System.out.println("Yup");
 //		else
 //			System.out.println("Nope");	
-     	getStats(dubArr);
+     	//getStats(dubArr);
+     	testPrimes(50);
 	}
 	public static void populateArray(){
 		int[] numsArr = new int[50];
@@ -219,7 +220,30 @@ public class ArrayDemos {
 			}
 			randArr[r]=toAdd;
 		}
-		
+	}
+	public static void testPrimes(int numToTest){
+		int lastToCheck = (int)(Math.sqrt(numToTest));
+		boolean[] theNumbers = new boolean[numToTest];
+		for(int i=0;i<numToTest;i++){
+			theNumbers[i]=true;
+		}
+		theNumbers[0] = false;
+		theNumbers[1] = false;
+		int inc = 2;
+		boolean first = true;
+		for(int t=2;t<numToTest;t+=inc){
+			if(!first){
+				theNumbers[t] = false;
+			}
+			else{
+				first = false;
+			}
+		}
+		for(int n=0;n<theNumbers.length;n++){
+			if(theNumbers[n]){
+				System.out.println(n+" is prime!!!!!!!!!!");
+			}
+		}
 	}
 }
 
