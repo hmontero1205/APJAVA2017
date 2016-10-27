@@ -7,14 +7,16 @@ public class ArrayDemos {
 	   // twoDiceRolls();
 		//createDeck();
 	    //swapDemo();
-		int[] intArr = {1,2,3,4,5};
-		int[] subArr = {2,3,5};
-		System.out.println(longestSharedSequence(intArr,subArr));
+     	int[] intArr = {1,2,3,4,5};
+     	double[] dubArr={2.0,1.0,3.0};
+//		int[] subArr = {2,3,5};
+//		System.out.println(longestSharedSequence(intArr,subArr));
 		//System.out.println(getSubArray(intArr,0,2));
 //		if(contains(intArr,subArr))
 //			System.out.println("Yup");
 //		else
-//			System.out.println("Nope");			
+//			System.out.println("Nope");	
+     	getStats(dubArr);
 	}
 	public static void populateArray(){
 		int[] numsArr = new int[50];
@@ -133,6 +135,91 @@ public class ArrayDemos {
 			}
 		}
 		return longestShared;
+	}
+	public static double[] getStats(double[] array){
+        /** 
+         * This method return a double[] contain a WHOLE BUNCH of stats
+         * The double array must keep the following stats about the array parameter:
+         * index 0 = the mean
+         * index 1 = the max
+         * index 2 = the min
+         * index 3 = the median
+         * index 4 = the number of values greater than or equal to the mean
+         * index 5 = the number of values below the mean
+         * 1,2,3
+         * 2,1,3
+         * */
+         double max = getMax(array);
+         double min = getMin(array);
+         double mean = ((double)(max+min)/2);
+         double[] stats = {mean,max,min,getMedian(selectionSort(array)),(array.length-(array.length/2)),(array.length/2)};
+         for(double d:stats){
+        	 System.out.println(d);
+         }
+         return stats;
+    }
+    public static double[] selectionSort(double[] array){
+        for (int i = 0; i < array.length - 1; i++){
+            int tempLowIndex = i;
+            for (int j = i + 1; j < array.length; j++){
+                if (array[j] < array[tempLowIndex]){
+                    tempLowIndex = j;
+                }
+            }
+           if(tempLowIndex!=i){
+                 swap1(array, tempLowIndex, i);
+           } 
+        }
+        return array;
+    }
+    
+    public static double getMedian(double[] sorted){
+        if(sorted.length % 2 == 0)
+            return (sorted[sorted.length/2] + sorted[(sorted.length/2)+1])/2;
+        else
+            return sorted[sorted.length/2];
+    }
+    public static double getMax(double[] arr){
+		double maxNum = arr[0];
+		for(int m=1;m<arr.length;m++){
+			if(arr[m]>maxNum)
+				maxNum = arr[m];
+		}
+		return maxNum;
+	}
+	
+	public static double getMin(double[] arr){
+		double minNum = arr[0];
+		for(int m=1;m<arr.length;m++){
+			if(arr[m]<minNum)
+				minNum = arr[m];
+		}
+		return minNum;
+		
+	}
+	public static void swap1(double[] swapArr, int i, int j) {
+ 		double placeHolder = swapArr[j];
+ 		swapArr[j] = swapArr[i];
+ 		swapArr[i] = placeHolder;
+	}
+	
+	public static int indexOf(int[] arr,int toFind){
+		for(int i=0;i<arr.length;i++){
+			if(arr[i]==toFind)
+				return i;
+		}
+		return -1;
+	}
+	public static void classChallenge(int[] arr){
+		int[] randArr = new int[arr.length-1];
+		for(int r=0;r<randArr.length;r++){
+			int toAdd = arr[(int)Math.random()*arr.length];
+			while(indexOf(arr,toAdd) > -1){
+				toAdd = arr[(int)Math.random()*arr.length]; 
+			}
+			randArr[r]=toAdd;
+		}
+		
 	}
 }
 
