@@ -214,7 +214,7 @@ public class ArrayDemos {
 		int[] randArr = new int[arr.length-1];
 		for(int r=0;r<randArr.length;r++){
 			int toAdd = arr[(int)Math.random()*arr.length];
-			while(indexOf(arr,toAdd) > -1){
+			while(indexOf(randArr,toAdd) > -1){
 				toAdd = arr[(int)Math.random()*arr.length]; 
 			}
 			randArr[r]=toAdd;
