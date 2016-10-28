@@ -229,14 +229,13 @@ public class ArrayDemos {
 		}
 		theNumbers[0] = false;
 		theNumbers[1] = false;
-		int inc = 2;
-		boolean first = true;
-		for(int t=2;t<numToTest;t+=inc){
-			if(!first){
-				theNumbers[t] = false;
-			}
-			else{
-				first = false;
+		for(int p=2;p<=lastToCheck;p++){
+			if(theNumbers[p]){
+				System.out.println("/n"+" is prime. Crossing off:");
+				for(int t=2*p;t<numToTest;t+=p){
+					System.out.print(t+", ");
+					theNumbers[t] = false;
+				}
 			}
 		}
 		for(int n=0;n<theNumbers.length;n++){
@@ -245,5 +244,6 @@ public class ArrayDemos {
 			}
 		}
 	}
+	
 }
 
