@@ -40,7 +40,7 @@ public class CaveRoom {
 		}else{
 			for(int dir = 0; dir < doors.length; dir++){
 				if(doors[dir] != null){
-					directions += "\n   There is a "+doors[dir].getDescription()+" to "+toDirection(dir)+". "+doors[dir].getDetails();
+				   directions += "\n   There is a "+doors[dir].getDescription()+" to "+toDirection(dir)+". "+doors[dir].getDetails();
 				}
 			}
 		}
@@ -106,6 +106,11 @@ public class CaveRoom {
 
 	public void setDescription(String string) {
 		description = string;
+	}
+
+	public void interpretInput(String input) {
+		
+		
 	}
 
 }
