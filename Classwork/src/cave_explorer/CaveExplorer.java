@@ -23,11 +23,13 @@ public class CaveExplorer {
 		caves[0][2].setConnection(CaveRoom.SOUTH,caves[1][2],new Door());
 		caves[1][2].setConnection(CaveRoom.SOUTH,caves[2][2],new Door());
 		
+		inventory = new Inventory();
 		startExploring();
 	}
 
 	public static void startExploring() {
 		while(true){
+			System.out.println(inventory.getDescription());
 			System.out.println(currentRoom.getDescription());
 			System.out.println("wyd fam xD");
 			String input = in.nextLine();
