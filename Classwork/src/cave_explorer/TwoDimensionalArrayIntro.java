@@ -1,15 +1,152 @@
 package cave_explorer;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class TwoDimensionalArrayIntro {
+	
+	public static String[][]arr2D;
+	public static String[][] pic;
+	public static int i;
+	public static int j;
+	public static Scanner in;
 
 	public static void main(String[] args) {
-		int[] arr = {0,1,2,3,4,5,6,7};
-	//	System.out.println(Arrays.toString(arr));
+		//makeCoolPic();
+//		boolean[][] mines = new boolean[6][6];
+//		createMines(mines,10);
+//		String[][] field = new String[mines.length][mines[0].length];
+//		matchValues(field,mines);
+//		print2DArr(field);
+		makeGrid(5,7);
+		
+		arr2D = new String[5][4];
+		pic = new String[5][4];
+		
+		for(int r=0;r<arr2D.length;r++){
+			for(int c=0;c<arr2D[r].length;c++){
+				arr2D[r][c] = "("+r+","+c+")";
+			}
+		}
+		i=2;
+		j=3;
+		in = new Scanner(System.in);		
+		
+		//startExploring();
+		
+	}
+	private static void startExploring() {
+		while(true){
+			//printPic(pic);
+			System.out.println("You are in room "+arr2D[i][j]);
+			System.out.println("wyd fam");
+			String input = in.nextLine();
+			while(!isValid(input)){
+				System.out.println("Please enter w, a, s, or d!!!!!");
+				input = in.nextLine();
+			}
+			interpretInput(input.toLowerCase());
+		}
+		
+	}
+	private static void interpretInput(String input) {
+		int iOrig = i;
+		int jOrig = j;
+		if(input.equals("w") && i > 0)
+			i--;
+		if(input.equals("a") && j>0)
+			j--;
+		if(input.equals("s") && i+1 > arr2D.length)
+			i++;
+		if(input.equals("d") && j+1> arr2D[0].length)
+			j++;
+		
+		if(iOrig == i && jOrig == j){
+			System.out.println("chill");
+		}
+	}
+	private static boolean isValid(String input){
+		String lc = input.toLowerCase();
+		String[] keys = {"w","a","s","d"};
+		for(String key:keys){
+			if(key.equals(lc))
+				return true;
+		}
+		return false;
+		
+	}
+	public static void makeGrid(int l, int w){
+		for(int i = 0;i<l;i++){
+			for(int j = 0;j<w;j++){	
+				if(i==0){
+					if(j<w-2)
+						System.out.print("__");
+				}
+				else{
+
+				}
+			}
+		}
+	}
+	public static void matchValues(String[][] f, boolean[][] m){
+		for(int r=0;r<f.length;r++){
+			for(int c=0;c<f[0].length;c++){
+				if(m[r][c])
+					f[r][c]="X";
+				else{
+					f[r][c] = countAdj(m,r,c);
+				}
+			}
+		}
+	}
+	public static String countAdj(boolean[][] m, int row, int col){
+		int count = 0;
+		//fast af boi
+//		for(int r=row-1;r<=row+1;r++){
+//			for(int c=col-1;c<=col+1;c++){
+//				if(r!=row && c!=col){
+//					if(row>=0 && row<m.length && col>=0 && col<m[r].length){
+//						
+//					}
+//				}
+//			}
+//		}
+		
+		//not fast af boi
+//		for(int r=0;r<m.length;r++){
+//			for(int c=0;c<m[r].length;c++){
+//				if((Math.abs(r-row)+Math.abs(c-col))==1 && m[r][c]){
+//					count++;
+//				}
+//			}
+//		}
+		count+=validAndTrue(m,row-1,col);
+		count+=validAndTrue(m,row+1,col);
+		count+=validAndTrue(m,row,col-1);
+		count+=validAndTrue(m,row,col+1);
+		return count+"";
+	}
+	private static int validAndTrue(boolean[][] m, int i, int j) {
+		if(i>=0 && i<m.length && j>=0 && j<m[i].length && m[i][j])
+			return 1;
+		else
+			return 0;
+	}
+	public static void createMines(boolean[][] m, int numMines){
+		while(numMines > 0){
+			int r = (int)(Math.random()*m.length);
+			int c = (int)(Math.random()*m[0].length);
+			if(!m[r][c]){
+				m[r][c] = true;
+				numMines--;
+			}
+		}
+	}
+	
+	public static void makeCoolPic(){
 		String[][] pic = new String[10][12];
 		
-				
+		
 		String[][] arr2D = new String[4][3];
 		for(int r=0;r<arr2D.length;r++){
 			for(int c=0;c<arr2D[r].length;c++){
@@ -74,7 +211,6 @@ public class TwoDimensionalArrayIntro {
 		}
 		
 		print2DArr(pic);
-		
 	}
 
 	public static void print2DArr(String[][] a){
