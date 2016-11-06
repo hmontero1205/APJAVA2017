@@ -18,7 +18,7 @@ public class TwoDimensionalArrayIntro {
 //		String[][] field = new String[mines.length][mines[0].length];
 //		matchValues(field,mines);
 //		print2DArr(field);
-		makeGrid(5,7);
+		makeGrid(100,72);
 		
 		arr2D = new String[5][4];
 		pic = new String[5][4];
@@ -76,16 +76,51 @@ public class TwoDimensionalArrayIntro {
 		
 	}
 	public static void makeGrid(int l, int w){
+		int lastSideIndex = -1;
+		boolean changeSideIndex = false;
+		int toChangeTo = 0;
 		for(int i = 0;i<l;i++){
-			for(int j = 0;j<w;j++){	
+			for(int j = 0;j<w+1;j++){	
 				if(i==0){
-					if(j<w-2)
+					if(j==0 || j%4==0){
+						System.out.print(" ");
+					}
+					else{
 						System.out.print("__");
+					}
 				}
 				else{
-
+					if(j==0 || j%4==0){
+						if(j!=0 && j!=w && (i-lastSideIndex == 3) && Math.random() > .8){
+							System.out.print("/");
+							changeSideIndex = true;
+							toChangeTo = i;
+						}
+						else{
+							System.out.print("|");
+						}
+					}
+					else{
+						if(i%3==0){
+							if(j%2==0 && Math.random() > .8)
+								System.out.print("/ ");
+							else
+								System.out.print("__");
+						}
+						else{
+							System.out.print("  ");
+						}
+						
+					}
 				}
+				
+
 			}
+			if(changeSideIndex){
+				lastSideIndex = toChangeTo;
+				changeSideIndex = false;
+			}
+			System.out.println("");
 		}
 	}
 	public static void matchValues(String[][] f, boolean[][] m){
