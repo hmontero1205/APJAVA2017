@@ -18,7 +18,10 @@ public class TwoDimensionalArrayIntro {
 //		String[][] field = new String[mines.length][mines[0].length];
 //		matchValues(field,mines);
 //		print2DArr(field);
-		makeGrid(5,7);
+		//makeGrid(40,41);
+		in = new Scanner(System.in);	
+		
+		playConnectFour(makeConnectFour(4,4));
 		
 		arr2D = new String[5][4];
 		pic = new String[5][4];
@@ -30,9 +33,65 @@ public class TwoDimensionalArrayIntro {
 		}
 		i=2;
 		j=3;
-		in = new Scanner(System.in);		
+			
 		
 		//startExploring();
+		
+	}
+	private static void playConnectFour(String[][] arr) {
+		while(true){
+			System.out.println("What column do you wanna drop it in");
+			String userIn = in.nextLine();
+			int columnChosen = indexOf(arr[0],userIn);
+			boolean madeChange = false;
+			for(int i=arr.length-1;i>0;i--){
+				if(arr[i][columnChosen].equals(" ")){
+					arr[i][columnChosen] = "O";
+					madeChange = true;
+					break;
+				}
+			}
+			print2DArr(arr);
+			if(!madeChange)
+				System.out.println("Column full try again");
+		}
+		
+	}
+	
+	public static int indexOf(String[] arr, String key){
+		for(int i=0;i<arr.length;i++){
+			if(arr[i].equals(key)){
+				return i;
+			}
+		}
+		return -1;
+	}
+	private static String[][] makeConnectFour(int r, int c) {
+		
+		String[][] grid = new String[r+1][(c*2)+1];
+		int numCol = (c*2)+1;
+		int numRow = r+1;
+		int lastColHeader = 0;
+		for(int i = 0;i< numCol;i++){
+			if(i%2==1){
+				grid[0][i] = Integer.toString(i-lastColHeader);
+				lastColHeader = i-lastColHeader;
+			}
+		}
+		
+		for(int i=0;i<grid.length;i++){
+			for(int j=0;j<grid[i].length;j++){
+				if(j%2==0){
+					grid[i][j] = "|";
+				}
+				else{
+					if(i!=0)
+						grid[i][j] = " ";
+				}
+			}
+		}
+		print2DArr(grid);
+		return grid;
 		
 	}
 	private static void startExploring() {
@@ -76,16 +135,51 @@ public class TwoDimensionalArrayIntro {
 		
 	}
 	public static void makeGrid(int l, int w){
+		int lastSideIndex = -1;
+		boolean changeSideIndex = false;
+		int toChangeTo = 0;
 		for(int i = 0;i<l;i++){
 			for(int j = 0;j<w;j++){	
 				if(i==0){
-					if(j<w-2)
+					if(j==0 || j%4==0){
+						System.out.print(" ");
+					}
+					else{
 						System.out.print("__");
+					}
 				}
 				else{
-
+					if(j==0 || j%4==0){
+						if(j!=0 && j!=w-1 && (i-lastSideIndex == 3) && Math.random() > .4){
+							System.out.print("/");
+							changeSideIndex = true;
+							toChangeTo = i;
+						}
+						else{
+							System.out.print("|");
+						}
+					}
+					else{
+						if(i%3==0){
+							if(j%2==0 && i!=l-1 && Math.random() > .8)
+								System.out.print("/ ");
+							else
+								System.out.print("__");
+						}
+						else{
+							System.out.print("  ");
+						}
+						
+					}
 				}
+				
+
 			}
+			if(changeSideIndex){
+				lastSideIndex = toChangeTo;
+				changeSideIndex = false;
+			}
+			System.out.println("");
 		}
 	}
 	public static void matchValues(String[][] f, boolean[][] m){
