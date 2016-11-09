@@ -22,6 +22,7 @@ public class TwoDimensionalArrayIntro {
 		in = new Scanner(System.in);	
 		
 		playConnectFour(makeConnectFour(4,4));
+		makeGrid(7,9);
 		
 		arr2D = new String[5][4];
 		pic = new String[5][4];
