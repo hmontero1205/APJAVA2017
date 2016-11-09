@@ -10,6 +10,7 @@ public class CaveExplorer {
 	public static Inventory inventory;
 	
 	public static void main(String[] args){
+		in = new Scanner(System.in);
 		caves = new CaveRoom[5][5];
 		for(int r=0; r<caves.length;r++){
 			for(int c=0;c<caves[r].length;c++){
