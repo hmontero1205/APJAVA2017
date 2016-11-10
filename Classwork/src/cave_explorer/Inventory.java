@@ -5,7 +5,7 @@ public class Inventory {
 	private String map;
 	
 	public Inventory(){
-		hasMap = true;
+		hasMap = false;
 		updateMap();
 	}
 	public void updateMap() {
@@ -18,11 +18,19 @@ public class Inventory {
 			//3 rows of text
 			for(int i=0;i<3;i++){
 				//a line of text for each room
-				String text = "|";
+				String text = "";
 				for(CaveRoom cr:row){
 					
 					if(cr.getDoor(CaveRoom.WEST)!=null && cr.getDoor(CaveRoom.WEST).isOpen()){
-						text=" ";
+						if(i!=1){
+							text+="|";
+						}
+						else{
+							text+=" ";
+						}
+					}
+					else{
+						text+="|";
 					}
 					if(i==0){
 						text+="   ";//3 spaces
@@ -34,7 +42,7 @@ public class Inventory {
 						else{
 							if(i==2){
 								if(cr.getDoor(CaveRoom.SOUTH)!=null && cr.getDoor(CaveRoom.SOUTH).isOpen()){
-									text+="   ";
+									text+="_ _";
 								}
 								else{
 									text+="___";
