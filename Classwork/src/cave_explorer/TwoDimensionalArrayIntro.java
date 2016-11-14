@@ -15,7 +15,7 @@ public class TwoDimensionalArrayIntro {
 		//makeCoolPic();
 //		boolean[][] mines = new boolean[6][6];
 //		createMines(mines,10);
-//		String[][] field = new String[mines.length][mines[0].length];
+//		String[][] field =  new String[mines.length][mines[0].length];
 //		matchValues(field,mines);
 //		print2DArr(field);
 		//makeGrid(40,41);
