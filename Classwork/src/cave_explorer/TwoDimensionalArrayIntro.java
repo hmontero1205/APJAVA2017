@@ -97,7 +97,6 @@ public class TwoDimensionalArrayIntro {
 	}
 	private static void startExploring() {
 		while(true){
-			//printPic(pic);
 			System.out.println("You are in room "+arr2D[i][j]);
 			System.out.println("wyd fam");
 			String input = in.nextLine();
