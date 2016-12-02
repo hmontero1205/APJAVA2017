@@ -31,13 +31,13 @@ public class Pokemon {
 		hp = h;
 	}
 	
-	public void setVoid(boolean b){
+	public void setPoisoned(boolean b){
 		poisoned = b;
 	}
 	
 	public void lapse(){
 		if(poisoned)
-			hp-=15;
+			hp-=15;     
 	}
 	
 	 public void attack(Pokemon target, Attack attack){
