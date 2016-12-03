@@ -1,2 +1,2 @@
 # APJAVA2017
-<marquee>Some cool stuff...</marquee>
+<i>Some cool stuff...</i>
