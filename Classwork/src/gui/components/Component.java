@@ -43,7 +43,6 @@ public abstract class Component implements Visible {
 	public boolean isAnimated() {
 		return false;
 	}
-
 	public void update() {
 		update(image.createGraphics());
 	}
