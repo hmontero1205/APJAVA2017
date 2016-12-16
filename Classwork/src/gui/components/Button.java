@@ -18,19 +18,21 @@ public class Button extends TextLabel implements Clickable {
 	}
 	
 	public Color getColor(){
-		return color;
+		return this.color;
 	}
 	
 	public void setColor(Color c){
 		this.color = c;
+		update();
 	}
 	public void update(Graphics2D g){
 		g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 		g.setColor(color);
 		g.fillRoundRect(0, 0, getWidth(),getHeight(), 25, 35);
 		g.setColor(color.black);
-		g.drawRoundRect(0, 0, getWidth()-1, getHeight()-1, 25, 35);
+		g.drawRoundRect(0, 0, getWidth(), getHeight()-1, 25, 35);
 		super.update(g);
+		
 	}
 
 	@Override
