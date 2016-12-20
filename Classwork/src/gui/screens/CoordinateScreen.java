@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import gui.Screen;
 import gui.components.Action;
 import gui.components.Button;
+import gui.components.Graphic;
 import gui.components.TextArea;
 import gui.components.TextLabel;
 import gui.components.Visible;
@@ -16,6 +17,7 @@ public class CoordinateScreen extends Screen implements MouseMotionListener {
 	private Button myButton;
 	private TextLabel text;
 	private TextArea textArea;
+	private Graphic robbieRotten;
 	public CoordinateScreen(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
@@ -23,8 +25,8 @@ public class CoordinateScreen extends Screen implements MouseMotionListener {
 
 	@Override
 	public void initObjects(ArrayList<Visible> viewObjects) {
-		text = new TextLabel(20,200,500,40,"Howdy");
-		textArea = new TextArea(20,100,500,800,"What the fuck did you just fucking say about me, you little bitch? I’ll have you know I graduated top of my class in the Navy Seals, and I’ve been involved in numerous secret raids on Al-Quaeda, and I have over 300 confirmed kills. I am trained in gorilla warfare and I’m the top sniper in the entire US armed forces. You are nothing to me but just another target. I will wipe you the fuck out with precision the likes of which has never been seen before on this Earth, mark my fucking words. You think you can get away with saying that shit to me over the Internet? Think again, fucker. As we speak I am contacting my secret network of spies across the USA and your IP is being traced right now so you better prepare for the storm, maggot. The storm that wipes out the pathetic little thing you call your life. You’re fucking dead, kid. I can be anywhere, anytime, and I can kill you in over seven hundred ways, and that’s just with my bare hands. Not only am I extensively trained in unarmed combat, but I have access to the entire arsenal of the United States Marine Corps and I will use it to its full extent to wipe your miserable ass off the face of the continent, you little shit. If only you could have known what unholy retribution your little “clever” comment was about to bring down upon you, maybe you would have held your fucking tongue. But you couldn’t, you didn’t, and now you’re paying the price, you goddamn idiot. I will shit fury all over you and you will drown in it. You’re fucking dead, kiddo.");
+		text = new TextLabel(10,545,500,40,"Howdy");
+		textArea = new TextArea(20,30,500,800,"Now listen closely. Here's a little lesson in trickery. This is going down in history. If you wanna be a villian number one, you'll have to chase a superhero on the run.");
 //		myButton = new Button(50,70,100,30,"Button button button button",Color.red, new Action(){
 //
 //			@Override
@@ -34,10 +36,11 @@ public class CoordinateScreen extends Screen implements MouseMotionListener {
 //			}
 //			
 //		});
-
+		robbieRotten = new Graphic(30,30,"resources/sampleImages/robbierotten.png");
 		viewObjects.add(text);
 		viewObjects.add(textArea);
-//		viewObjects.add(myButton);
+		viewObjects.add(robbieRotten);
+		//viewObjects.add(myButton);
 		
 	}
 
