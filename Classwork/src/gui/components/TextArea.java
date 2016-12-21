@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 
 public class TextArea extends TextLabel {
 
@@ -12,34 +13,28 @@ public class TextArea extends TextLabel {
 	}
 
 	public void update(Graphics2D g){
-		FontMetrics fm = g.getFontMetrics();
-		//g.setFont(new Font(getFont(),Font.PLAIN,getSize()));
 		if(getText()!=null){
+			g.setFont(new Font(getFont(),Font.PLAIN,getSize()));
+			g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+			g.setColor(Color.black);
+			FontMetrics fm = g.getFontMetrics();
 			String[] wordArr = this.getText().split(" ");
+			int wordArrIndex = 0;
 			String toPrint = "";
 			int linesPrinted = 1;
-			for(int i=0;i<wordArr.length;i++){
-				if(fm.stringWidth(toPrint) + fm.stringWidth(wordArr[i]) +fm.stringWidth(" ") < this.getWidth()-5){
-					switch(i){
-						case 0: toPrint+=wordArr[i]; break;
-						default: toPrint+=" "+wordArr[i]; break;
+			if(fm.stringWidth(wordArr[0])<this.getWidth()-5){
+				while(((linesPrinted)*(fm.getAscent() + fm.getDescent()) < this.getHeight()) && wordArrIndex<wordArr.length){
+					toPrint+=wordArr[wordArrIndex];
+					if(fm.stringWidth(toPrint)>this.getWidth())
+						break;
+					while(wordArrIndex+1<wordArr.length && fm.stringWidth(toPrint + " " + wordArr[wordArrIndex+1]) < this.getWidth()-5 ){
+						wordArrIndex++;
+						toPrint+=" "+wordArr[wordArrIndex];
 					}
-					if(i==wordArr.length-1){
-						g.setColor(Color.black);
-						System.out.println("Hey!");
-						g.drawString(toPrint, 5, linesPrinted * (fm.getAscent() + fm.getDescent()));
-					}
-				}
-				else{
-					g.setColor(Color.black);
-					System.out.println("Hey");
 					g.drawString(toPrint, 5, linesPrinted * (fm.getAscent() + fm.getDescent()));
 					linesPrinted++;
-					toPrint =wordArr[i];
-					
-					if((linesPrinted)*(fm.getAscent() + fm.getDescent()) > this.getHeight()){
-						break;
-					}
+					wordArrIndex++;
+					toPrint="";			
 				}
 			}
 		}
