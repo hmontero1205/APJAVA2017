@@ -2,6 +2,7 @@ package gui.screens;
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
@@ -12,8 +13,9 @@ import gui.components.Graphic;
 import gui.components.TextArea;
 import gui.components.TextLabel;
 import gui.components.Visible;
+import gui.sampleGames.MouseFollower;
 
-public class CoordinateScreen extends Screen implements MouseMotionListener {
+public class CoordinateScreen extends Screen implements MouseListener, MouseMotionListener {
 	private Button myButton;
 	private TextLabel text;
 	private TextArea textArea;
@@ -28,15 +30,13 @@ public class CoordinateScreen extends Screen implements MouseMotionListener {
 		text = new TextLabel(10,545,500,40,"Mouse @ (???.???)");
 		textArea = new TextArea(10,40,780,800,"Hey! We are Number One Hey! We are Number One! Now listen closely... Here\'s a little lesson in trickery. This is going down in history. If you wanna be a Villain Number One, you'll have to chase a superhero on the run. Just follow my moves, and sneak around. Be careful not to make a sound! Shh! No, don\'t touch that! We are Number One Hey! We are Number One Ha ha ha! Now look at this net, that I have found. When I say go, be ready to throw. Go! Throw it on him, not me! Ugh, let\'s try something else. Now watch and learn, here\'s the deal. He\'ll slip and slide on this banana peel. Ha ha ha, gasp! What are you doing!? ba-ba-biddly-ba-ba-ba-ba, ba-ba-ba-ba-ba-ba-ba We are Number One Hey! ba-ba-biddly-ba-ba-ba-ba, ba-ba-ba-ba-ba-ba-ba We are Number One Hey! ba-ba-biddly-ba-ba-ba-ba, ba-ba-ba-ba-ba-ba-ba We are Number One Hey! ba-ba-biddly-ba-ba-ba-ba, ba-ba-ba-ba-ba-ba-ba We are Number One Hey! Hey!");
 		myButton = new Button(15,525,100,30,"Click",Color.gray, new Action(){
-
-			@Override
 			public void act() {
-				// TODO Auto-generated method stub
-				
+				MouseFollower.game.setScreen(MouseFollower.myScreen);
+				System.out.println("action");
 			}
 			
 		});
-		robbieRotten = new Graphic(160,10,.8,"resources/sampleImages/robbierotten.png");
+		robbieRotten = new Graphic(160,10,"resources/sampleImages/robbierotten.png");
 		viewObjects.add(text);
 		viewObjects.add(textArea);
 		viewObjects.add(robbieRotten);
@@ -44,13 +44,11 @@ public class CoordinateScreen extends Screen implements MouseMotionListener {
 		
 	}
 
-	@Override
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void mouseMoved(MouseEvent e) {
 		int mx = e.getX();
 		int my = e.getY();
@@ -60,6 +58,44 @@ public class CoordinateScreen extends Screen implements MouseMotionListener {
 	
 	public MouseMotionListener getMouseMotionListener(){
 		return this;
+	}
+	
+	public MouseListener getMouseListener(){
+		return this;
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		System.out.println("click");
+		if(myButton.isHovered(e.getX(), e.getY())){
+			System.out.println("hover");
+			myButton.act();
+		}
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
