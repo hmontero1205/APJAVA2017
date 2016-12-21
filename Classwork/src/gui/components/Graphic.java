@@ -1,6 +1,7 @@
 package gui.components;
 
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
 import javax.swing.ImageIcon;
@@ -38,8 +39,7 @@ public class Graphic implements Visible {
 		try{
 			ImageIcon icon = new ImageIcon(imageLocation);
 			int newWidth = (int)(icon.getIconWidth()*scale);
-			int newHeight = (int)(icon.getIconHeight()*scale);
-			
+			int newHeight = (int)(icon.getIconHeight()*scale);		
 			image = new BufferedImage(newWidth,newHeight,BufferedImage.TYPE_INT_ARGB);
 			Graphics2D g = image.createGraphics();
 			g.drawImage(icon.getImage(),0,0,newWidth,newHeight,0,0,icon.getIconWidth(),icon.getIconHeight(),null);
