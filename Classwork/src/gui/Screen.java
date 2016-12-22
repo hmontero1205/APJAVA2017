@@ -24,7 +24,9 @@ public abstract class Screen {
 		
 	}
 	public void update() {
-		Graphics2D g = image.createGraphics();
+		BufferedImage buffer = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
+		Graphics2D g2 = image.createGraphics();
+		Graphics2D g = buffer.createGraphics();
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(new Color(204,204,255));
 		g.fillRect(0,0,image.getWidth(), image.getHeight());
@@ -35,6 +37,7 @@ public abstract class Screen {
 		for(Visible v: viewObjects){
 			g.drawImage(v.getImage(), v.getX(), v.getY(), null);
 		}
+		g2.drawImage(buffer, 0, 0, null);
 		
 	}
 	public abstract void initObjects(ArrayList<Visible> viewObjects);

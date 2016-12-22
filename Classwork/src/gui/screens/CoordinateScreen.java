@@ -20,6 +20,7 @@ public class CoordinateScreen extends Screen implements MouseListener, MouseMoti
 	private TextLabel text;
 	private TextArea textArea;
 	private Graphic robbieRotten;
+	private Button stefanButton;
 	public CoordinateScreen(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
@@ -29,18 +30,23 @@ public class CoordinateScreen extends Screen implements MouseListener, MouseMoti
 	public void initObjects(ArrayList<Visible> viewObjects) {
 		text = new TextLabel(10,545,500,40,"Mouse @ (???.???)");
 		textArea = new TextArea(10,40,780,800,"Hey! We are Number One Hey! We are Number One! Now listen closely... Here\'s a little lesson in trickery. This is going down in history. If you wanna be a Villain Number One, you'll have to chase a superhero on the run. Just follow my moves, and sneak around. Be careful not to make a sound! Shh! No, don\'t touch that! We are Number One Hey! We are Number One Ha ha ha! Now look at this net, that I have found. When I say go, be ready to throw. Go! Throw it on him, not me! Ugh, let\'s try something else. Now watch and learn, here\'s the deal. He\'ll slip and slide on this banana peel. Ha ha ha, gasp! What are you doing!? ba-ba-biddly-ba-ba-ba-ba, ba-ba-ba-ba-ba-ba-ba We are Number One Hey! ba-ba-biddly-ba-ba-ba-ba, ba-ba-ba-ba-ba-ba-ba We are Number One Hey! ba-ba-biddly-ba-ba-ba-ba, ba-ba-ba-ba-ba-ba-ba We are Number One Hey! ba-ba-biddly-ba-ba-ba-ba, ba-ba-ba-ba-ba-ba-ba We are Number One Hey! Hey!");
-		myButton = new Button(15,525,100,30,"Click",Color.gray, new Action(){
+		myButton = new Button(15,525,165,35,"Don't click here",Color.gray, new Action(){
 			public void act() {
 				MouseFollower.game.setScreen(MouseFollower.myScreen);
-				System.out.println("action");
 			}
 			
 		});
-		robbieRotten = new Graphic(160,10,"resources/sampleImages/robbierotten.png");
+		stefanButton = new Button(450,525,265,35,"Click here for Stefan :)", Color.gray, new Action(){
+			public void act(){
+				MouseFollower.game.setScreen(MouseFollower.stefanS);
+			}
+		});
+		robbieRotten = new Graphic(170,10,.8,"resources/sampleImages/robbierotten.png");
 		viewObjects.add(text);
 		viewObjects.add(textArea);
 		viewObjects.add(robbieRotten);
 		viewObjects.add(myButton);
+		viewObjects.add(stefanButton);
 		
 	}
 
@@ -66,10 +72,11 @@ public class CoordinateScreen extends Screen implements MouseListener, MouseMoti
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		System.out.println("click");
 		if(myButton.isHovered(e.getX(), e.getY())){
-			System.out.println("hover");
 			myButton.act();
+		}
+		if(stefanButton.isHovered(e.getX(), e.getY())){
+			stefanButton.act();
 		}
 		
 	}
