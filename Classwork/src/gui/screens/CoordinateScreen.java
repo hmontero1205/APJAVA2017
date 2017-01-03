@@ -21,6 +21,7 @@ public class CoordinateScreen extends Screen implements MouseListener, MouseMoti
 	private TextArea textArea;
 	private Graphic robbieRotten;
 	private Button stefanButton;
+	private Button cseButton;
 	public CoordinateScreen(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
@@ -41,12 +42,18 @@ public class CoordinateScreen extends Screen implements MouseListener, MouseMoti
 				MouseFollower.game.setScreen(MouseFollower.stefanS);
 			}
 		});
+		cseButton = new Button(350,450,400,35,"Click here for ClickableScreen Example!!!", Color.gray, new Action(){
+			public void act(){
+				MouseFollower.game.setScreen(MouseFollower.cse);
+			}
+		});
 		robbieRotten = new Graphic(170,10,.8,"resources/sampleImages/robbierotten.png");
 		viewObjects.add(text);
 		viewObjects.add(textArea);
 		viewObjects.add(robbieRotten);
 		viewObjects.add(myButton);
 		viewObjects.add(stefanButton);
+		viewObjects.add(cseButton);
 		
 	}
 
@@ -77,6 +84,9 @@ public class CoordinateScreen extends Screen implements MouseListener, MouseMoti
 		}
 		if(stefanButton.isHovered(e.getX(), e.getY())){
 			stefanButton.act();
+		}
+		if(cseButton.isHovered(e.getX(), e.getY())){
+			cseButton.act();
 		}
 		
 	}
