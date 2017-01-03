@@ -34,8 +34,11 @@ public abstract class Screen {
 //		for(int i = 0; i<viewObjects.size(); i++){
 //			
 //		}
-		for(Visible v: viewObjects){
-			g.drawImage(v.getImage(), v.getX(), v.getY(), null);
+//		for(Visible v: viewObjects){
+//			g.drawImage(v.getImage(), v.getX(), v.getY(), null);
+//		}
+		for(int i=viewObjects.size()-1;i>-1;i--){
+			g.drawImage(viewObjects.get(i).getImage(), viewObjects.get(i).getX(), viewObjects.get(i).getY(), null);
 		}
 		g2.drawImage(buffer, 0, 0, null);
 		
@@ -64,5 +67,17 @@ public abstract class Screen {
 	}
 	public void remove(Visible v){
 		viewObjects.remove(v);
+	}
+	public void moveToBack(Visible v){
+		if(viewObjects.contains(v)){
+			viewObjects.remove(v);
+			viewObjects.add(0,v);
+		}
+	}
+	public void moveToFront(Visible v){
+		if(viewObjects.contains(v)){
+			viewObjects.remove(v);
+			viewObjects.add(v);
+		}
 	}
 }
