@@ -13,6 +13,7 @@ public abstract class ClickableScreen extends Screen implements MouseListener {
 	private ArrayList<Clickable> clickables;
 	public ClickableScreen(int width, int height) {
 		super(width, height);
+		//this is a comment
 	}
 
 	@Override
