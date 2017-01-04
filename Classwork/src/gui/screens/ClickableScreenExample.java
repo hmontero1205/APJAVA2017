@@ -19,7 +19,7 @@ public class ClickableScreenExample extends ClickableScreen {
 	}
 
 	@Override
-	public void initAllObjects(ArrayList<Visible> obList) {
+	public void initAllObjects(ArrayList<Visible> viewObjects) {
 		tLabel3= new TextLabel(10,50, 900, 20, "This is a Screen that extends the ClickableScreen class.");
 		myBut3 = new Button(10,70,250,30,"Return to Robbie Rotten",Color.gray, new Action(){
 
@@ -29,8 +29,8 @@ public class ClickableScreenExample extends ClickableScreen {
 			}
 			
 			});
-		obList.add(tLabel3);
-		obList.add(myBut3);
+		viewObjects.add(tLabel3);
+		viewObjects.add(myBut3);
 
 	}
 

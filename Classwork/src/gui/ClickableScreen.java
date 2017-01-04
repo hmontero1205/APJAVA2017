@@ -62,7 +62,7 @@ public abstract class ClickableScreen extends Screen implements MouseListener {
 		}
 	}
 	
-	public abstract void initAllObjects(ArrayList<Visible> obList);
+	public abstract void initAllObjects(ArrayList<Visible> viewObjects);
 	
 	public MouseListener getMouseListener(){
 		return this;
