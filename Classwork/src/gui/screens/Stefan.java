@@ -37,7 +37,8 @@ public class Stefan extends Screen implements MouseListener, MouseMotionListener
 				 MouseFollower.game.setScreen(MouseFollower.cs);
 			}
 		});
-		stefan = new ClickableGraphic(100,100,"resources/sampleImages/stefan.png",new Action(){
+		stefan = new ClickableGraphic(100,100,"resources/sampleImages/stefan.png");
+		stefan.setAction(new Action(){
 			public void act(){
 				count++;
 				tLab.setText("Money Raised: $"+Integer.toString(count));

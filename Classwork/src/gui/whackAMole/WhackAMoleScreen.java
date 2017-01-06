@@ -28,7 +28,7 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable {
 		player = getAPlayer();
 		
 		label = new TextLabel(370, 270, 100, 50, "");
-		timeLabel =  new TextLabel(30,30,100,50,"30.0");
+		timeLabel =  new TextLabel(300,30,100,50,"30.0");
 		viewObjects.add(player);
 		viewObjects.add(label);
 		viewObjects.add(timeLabel);
@@ -53,7 +53,7 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable {
 	public void run() {
 		changeText("Ready...");
 		changeText("Set...");
-		changeText("Go!!!");
+		changeText("Rawr XD!!!");
 		changeText("");
 		while(timeLeft>0){
 			updateTimer();
@@ -106,7 +106,7 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable {
 			e.printStackTrace();
 		}
 		timeLeft-=.1;
-		timeLabel.setText(""+(int)(timeLeft*10)/10.0);
+		timeLabel.setText(">"+(int)(timeLeft*10)/10.0 + "<");
 				
 		
 	}
