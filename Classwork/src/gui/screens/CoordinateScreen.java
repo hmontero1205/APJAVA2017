@@ -10,6 +10,7 @@ import gui.Screen;
 import gui.components.Action;
 import gui.components.Button;
 import gui.components.Graphic;
+import gui.components.MovingComponent;
 import gui.components.TextArea;
 import gui.components.TextLabel;
 import gui.components.Visible;
@@ -55,6 +56,11 @@ public class CoordinateScreen extends Screen implements MouseListener, MouseMoti
 		viewObjects.add(stefanButton);
 		viewObjects.add(cseButton);
 		
+		MovingComponent c = new MovingComponent(20,20,100,100);
+		viewObjects.add(c);
+		c.setVy(2);
+		c.setVx(1);
+		c.play();
 	}
 
 	public void mouseDragged(MouseEvent e) {
