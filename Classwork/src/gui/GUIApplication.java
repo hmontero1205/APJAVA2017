@@ -1,5 +1,6 @@
 package gui;
 import java.awt.Graphics;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
@@ -26,23 +27,36 @@ public abstract class GUIApplication extends JFrame implements Runnable{
 	}
 
 	public void setScreen(Screen s){
-		if(currentScreen!= null){
-			MouseListener ml = currentScreen.getMouseListener();
-			if(ml!= null)
-				removeMouseListener(ml);
-			MouseMotionListener mml = currentScreen.getMouseMotionListener();
-			if(mml!=null)
-				removeMouseMotionListener(mml);
-		}
+		removeListeners();
 		currentScreen = s;
-		if(currentScreen != null){
-			addMouseMotionListener(currentScreen.getMouseMotionListener());
-			addMouseListener(currentScreen.getMouseListener());
+		addListeners();
+	}
+
+	private void removeListeners() {
+		if (currentScreen != null) {
+			if (currentScreen.getMouseListener() != null)
+				removeMouseListener(currentScreen.getMouseListener());
+			if (currentScreen.getMouseMotionListener() != null)
+				removeMouseMotionListener(currentScreen.getMouseMotionListener());
+			if (currentScreen.getKeyListener() != null)
+				removeKeyListener(currentScreen.getKeyListener());
+			if (currentScreen.getMouseWheelListener() != null)
+				removeMouseWheelListener(currentScreen.getMouseWheelListener());
 		}
 	}
-//	public static void main(String[] args){
-//		new GUIApplication(800,600);
-//	}
+
+	private void addListeners() {
+		if (currentScreen != null) {
+			if (currentScreen.getMouseListener() != null)
+				addMouseListener(currentScreen.getMouseListener());
+			if (currentScreen.getMouseMotionListener() != null)
+				addMouseMotionListener(currentScreen.getMouseMotionListener());
+			if (currentScreen.getKeyListener() != null)
+				addKeyListener(currentScreen.getKeyListener());
+			if (currentScreen.getMouseWheelListener() != null)
+				addMouseWheelListener(currentScreen.getMouseWheelListener());
+		}
+	}
 	
 	public void run(){
 		while(true){
@@ -51,9 +65,7 @@ public abstract class GUIApplication extends JFrame implements Runnable{
 			try {
 				Thread.sleep(30);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
-				//break;
 			}
 		}
 	}

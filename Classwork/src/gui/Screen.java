@@ -3,8 +3,10 @@ package gui;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseWheelListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -31,12 +33,6 @@ public abstract class Screen {
 		g.setColor(new Color(204,204,255));
 		g.fillRect(0,0,image.getWidth(), image.getHeight());
 		g.setColor(Color.black);
-//		for(int i = 0; i<viewObjects.size(); i++){
-//			
-//		}
-//		for(Visible v: viewObjects){
-//			g.drawImage(v.getImage(), v.getX(), v.getY(), null);
-//		}
 		for(int i=viewObjects.size()-1;i>-1;i--){
 			g.drawImage(viewObjects.get(i).getImage(), viewObjects.get(i).getX(), viewObjects.get(i).getY(), null);
 		}
@@ -62,6 +58,10 @@ public abstract class Screen {
 		return null;
 	}
 	
+	public KeyListener getKeyListener(){
+		return null;	
+	}
+	
 	public void addObject(Visible v){
 		viewObjects.add(v);
 	}
@@ -80,4 +80,8 @@ public abstract class Screen {
 			viewObjects.add(v);
 		}
 	}
+	public MouseWheelListener getMouseWheelListener() {
+		return null;
+	}
+	
 }
