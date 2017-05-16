@@ -22,3 +22,4 @@ finishing up the ones we started on 5/8.
 (End) We get how networking works now and how we're going to use SQL in our project. Tomorrow we will code a log in for our game.
 
 5/16: (Start) We will try to make a simple log in today!!!
+(End) Well... we didn't make a log in screen BUT we did become more familiar with the libgdx library and discovered that it is very similar to the game engine we made in class! We'll do the login tonight.
