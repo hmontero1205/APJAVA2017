@@ -1,7 +1,7 @@
 5/4: (Start) Today's goal will be to figure out the more concrete details of our game.
 (End) We looked into trying to install and Android Development IDE but found it to be impractical to install it at school because it would take forever. As such, we're going to download it at home and play around with it there. Tomorrow, we'll see how exactly we're going to use this IDE.
 
-5/5: (Start) Since Kevin is absent (and since he's the only one with actual Android Development AND networking experience), we're kinda lost. Today we're just gonna keep working on the game's plot and features and reconvene with Kevin on Monday.
+5/5: (Start) Since Kevin is absent (and since he's the only one with actual Android Development AND netwweorking experience), we're kinda lost. Today we're just gonna keep working on the game's plot and features and reconvene with Kevin on Monday.
 (End) I promise we're not actually totally dependent on Kevin. Since we're just getting started, we really need Kevin to show us the basics. Today, we just discussed the possibility of basing the game off of Miitomo. Over the weekend, we're gonna download this app and play around with it and see how we can adopt this game and spice it up with the LoveHunterX theme.
 
 5/8: (Start) Over the weekend,I set up Android Studio on my laptop and connected the IDE to Github. Today our main goal will be to get Shoheb and Mike onboard.
@@ -23,3 +23,5 @@ finishing up the ones we started on 5/8.
 
 5/16: (Start) We will try to make a simple log in today!!!
 (End) Well... we didn't make a log in screen BUT we did become more familiar with the libgdx library and discovered that it is very similar to the game engine we made in class! We'll do the login tonight.
+
+5/17: (Start) Last night, we made a crude login screen. In doing so, we played around with libgdx components and discovered that we need skins. We spent an hour or so looking into how skins worked and getting some. Afterwards, we started looking into Netty, a Java library used for networking. 
