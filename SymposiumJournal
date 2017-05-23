@@ -33,3 +33,6 @@ finishing up the ones we started on 5/8.
 
 5/22: (Start) Over the weekend, we did a whole bunch of cool stuff!! We got a server running on my laptop and hooked it up with a local mysql server. We got the app to communicate with the server, too. We even got the server to respond to requests made by the app! We're going to start off by touching base with everyone.
 (End) We worked on making the log in screen prettier. We're going to finish this up tonight and try to hook up our app to Kevin's legit server.
+
+5/23: (Start) Last night we got the server and database hooked up to Kevin's host and added some failsafes against connection problems. 
+(End) We discovered a little issue with the host that Kevin is going to deal with tonight. We agreed on some goals. By Friday we will have a simple demo showing off character movement. We will start coding our own things by the weeked
